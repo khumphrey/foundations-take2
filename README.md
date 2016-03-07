@@ -7,6 +7,8 @@ Read the instructions below for more details on each problem and also how to sta
 
 1. **Important:** Fork this repository to your own Github user account
 2. Clone your forked repo to your local machine
+3. `npm install`
+4. Run `npm test` and load the URL displayed in your terminal.
 
 This works just like the Test First JavaScript exercises that we've done - reverse engineer the test, write code to make the tests pass.
 
