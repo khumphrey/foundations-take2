@@ -1,0 +1,20 @@
+{
+  "name": "assessment-foundations-retake",
+  "version": "1.0.0",
+  "description": "testing functional and object-oriented javascript",
+  "scripts": {
+    "test": "testem",
+    "grade": "node_modules/.bin/testem ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FullstackAcademy/assessment-foundations-retake.git
+  },
+  "bugs": {
+    "url": "https://github.com/FullstackAcademy/assessment-foundations-retake/issues"
+  },
+  "homepage": "https://github.com/FullstackAcademy/assessment-foundations-retake#readme",
+  "dependencies": {
+    "testem": "0.9.1"
+  }
+}
