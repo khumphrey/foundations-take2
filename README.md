@@ -27,7 +27,4 @@ Each folder has a **README.md** file, **read the README files to get an overview
 
 ### Submitting
 
-When time is complete or when you finish the code, commit the changes to the git repository using the command: `git commit -am "submitting assessment"` Then, do two things:
-
-1. Push your repository back to your own personal fork on Github.
-2. Email a link of your FoundationsAssessment repository instructors+assessment@fullstackacademy.com.
+When time is complete or when you finish the code, commit the changes to the git repository using the command: `git commit -am "submitting assessment"`.  After you commit you work, commit your work to your personal fork on Github.
