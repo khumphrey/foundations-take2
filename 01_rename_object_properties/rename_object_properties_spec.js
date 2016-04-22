@@ -1,54 +1,51 @@
 describe('renameObjectProperties', function(){
 	
 	it('renameObjectProperties is a function', function(){
-		expect(typeof renameObjectProperties ).toEqual("function");
+		expect(typeof renameObjectProperties).toEqual("function");
 	});
 
-	it('accepts an array of names as an argument and changes the names of each property on an object', function(){
-		var obj = {a:1, b:2, c:3, d:4 },
-				names = ['one','two','three','four'];
-
-				renameObjectProperties.apply(obj,[names]);
-
-				expect(obj).toEqual({one:1, two:2, three: 3, four: 4});
+	it('operates on an object (source), accepts a separate object (newKeyNames) as a parameter, and returns an object', function(){
+		var source = {foo: 'bar'};
+		var newKeyNames = {foo: 'newNameForFoo'};
+		var renamed = renameObjectProperties.call(source, newKeyNames);
+		expect(renamed).toEqual(jasmine.any(Object));
 	});
 
-	it('accepts a second argument that capitalizes the new property names', function(){
-		var obj = {1:"a", 2:"b", 3:"c", 4:"d" },
-				names = ['a','b','c','d'];
-
-				renameObjectProperties.apply(obj,[names,true]);
-				expect(obj).toEqual({A:"a", B:"b", C:"c", D:"d" });
+	it('for each key in the newKeyNames object, renames a key in the source object', function(){
+		var source = {firstName: 'Zeke', lastName: 'Nie'};
+		var newKeyNames = {firstName: 'givenName', lastName: 'familyName'};
+		var renamed = renameObjectProperties.call(source, newKeyNames);
+		expect(renamed).toEqual({givenName: 'Zeke', familyName: 'Nie'});
 	});
 
-	it('if second argument is false, it does not capitalize the new property names', function(){
-	var obj = {1:"a", 2:"b", 3:"c", 4:"d" },
-			names = ['a','b','c','d'];
-
-			renameObjectProperties.apply(obj,[names,false]);
-			expect(obj).toEqual({a:"a", b:"b", c:"c", d:"d" });
+	it('will not rename a key on source if it was not originally there', function(){
+		var source = {emotions: ['joy', 'sadness', 'anger', 'disgust', 'fear']};
+		var newKeyNames = {emotions: 'feelings', ideas: 'thoughts'};
+		var renamed = renameObjectProperties.call(source, newKeyNames);
+		expect(renamed.hasOwnProperty('thoughts')).toBe(false);
+		expect(renamed).toEqual({feelings: ['joy', 'sadness', 'anger', 'disgust', 'fear']});
 	});
 
-	it("skips properties of the object's prototype", function() {
-			var alphabet;
-	    
-	    var Alphabet = function() {
-	      this.a = 1;
-	      this.b = 2;
-	    };
+	it('skips keys of the source object\'s internal prototype', function(){
+		var Alphabet = function () {
+			this.a = 1;
+			this.b = 2;
+		};
+		Alphabet.prototype.c = 3;
+		var source = new Alphabet();
+		var newKeyNames = {a: 'alpha', b: 'bravo', c: 'charlie'};
+		var renamed = renameObjectProperties.call(source, newKeyNames);
+		var expected = Object.create(Alphabet.prototype);
+		expected.alpha = 1;
+		expected.bravo = 2;
+		expect(renamed).toEqual(expected);
+	});
 
-	    Alphabet.prototype = {
-	      c: 3
-	    };
-
-	    alphabet = new Alphabet();
-	    
-	    
-
-	    renameObjectProperties.apply(alphabet, [['one','two','three'],true])
-
-	    expect(Alphabet.prototype.c).toEqual(3);
-	    expect(alphabet.THREE).toEqual(undefined);
-   });
+	it('accepts an optional second parameter, a boolean that if true will capitalize the renamed keys', function(){
+		var source = {name: 'Hamlet', author: 'Shakespeare', type: 'drama', year: '~1600'};
+		var newKeyNames = {name: 'title', type: 'category'};
+		var renamed = renameObjectProperties.call(source, newKeyNames, true);
+		expect(renamed).toEqual({TITLE: 'Hamlet', author: 'Shakespeare', CATEGORY: 'drama', year: '~1600'});
+	});
 
 });
