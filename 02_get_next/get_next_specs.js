@@ -15,7 +15,7 @@ describe("iterable function", function() {
 
   var generateRandomArray = function(length){
     var randomIntegers = [];
-    for(var i = 0, length; i < length; i++){
+    for(var i = 0; length; i < length; i++){
       randomIntegers.push(Math.round(Math.random() * length));
     }
     return randomIntegers;
@@ -52,7 +52,7 @@ describe("iterable function", function() {
     getNext();
     getNext();
 
-    expect(getNext()).toEqual(randomIntegers[5])
+    expect(getNext()).toEqual(randomIntegers[5]);
   });
 
   it('if getNext is invoked with a numerical index, it will retrieve the value at that index', function(){
