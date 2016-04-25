@@ -15,7 +15,7 @@ describe("iterable function", function() {
 
   var generateRandomArray = function(length){
     var randomIntegers = [];
-    for(var i = 0; length; i < length; i++){
+    for(var i = 0, length; i < length; i++){
       randomIntegers.push(Math.round(Math.random() * length));
     }
     return randomIntegers;
