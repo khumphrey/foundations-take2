@@ -1,5 +1,5 @@
-# Welcome to the Foundations Assessment Retake
-Read the instructions below for more details on each problem and also how to start and submit your assessment. Good luck!
+# Welcome to the Foundations Checkpoint Retake
+Read the instructions below for more details on each problem and also how to start and submit your checkpoint. Good luck!
 
 ## Starting/Submission Instructions
 
@@ -27,4 +27,4 @@ Each folder has a **README.md** file, **read the README files to get an overview
 
 ### Submitting
 
-When time is complete or when you finish the code, commit the changes to the git repository using the command: `git commit -am "submitting assessment"`.  After you commit you work, commit your work to your personal fork on Github.
+When time is complete or when you finish the code, commit the changes to the git repository using the command: `git commit -am "submitting checkpoint"`.  After you commit you work, commit your work to your personal fork on Github.
